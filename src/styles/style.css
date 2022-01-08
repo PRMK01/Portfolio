@@ -37,13 +37,16 @@ body {
   padding-right: 0.5vw;
   z-index: 5;
 }
-.navigation img {
+.navigation > a {
   position: absolute;
   left: 2vw;
+}
+.navigation > a img {
+  filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(81deg) brightness(104%) contrast(101%);
   width: 4.5vw;
   transition: 0.2s ease-in-out;
 }
-.navigation img:hover {
+.navigation > a img:hover {
   transform: rotate(-5deg);
 }
 .navigation ul {
@@ -119,7 +122,7 @@ body {
   font-family: "Monument Extended";
   letter-spacing: 10px;
   text-transform: uppercase;
-  margin-top: 60px;
+  margin-top: 75px;
   margin-bottom: 90px;
 }
 .section-title h2 {
@@ -156,6 +159,32 @@ body {
 }
 #header img {
   width: 260px;
+}
+#header .arrows {
+  position: absolute;
+  bottom: 9%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#header .arrows span {
+  opacity: 0;
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-bottom: 3px solid #efefef;
+  border-right: 3px solid #efefef;
+  transform: rotate(45deg);
+  margin: -20px;
+  -webkit-animation: arrows-movement 2.5s infinite;
+          animation: arrows-movement 2.5s infinite;
+}
+#header .arrows span:nth-child(2) {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+#header .arrows span:nth-child(3) {
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
 }
 
 #about {
@@ -204,6 +233,7 @@ body {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  margin-bottom: 7px;
 }
 #about .section-wrapper .roll-out .dice-wrapper {
   -webkit-user-select: none;
@@ -213,7 +243,20 @@ body {
   display: flex;
   gap: 15px;
 }
+#about .section-wrapper .roll-out .dice-wrapper img {
+  pointer-events: none;
+  transition: 350ms;
+  width: 25px;
+  margin-top: 15px;
+}
+#about .section-wrapper .roll-out .dice-wrapper .philosopher {
+  width: 20px;
+}
+#about .section-wrapper .roll-out .dice-wrapper .youtube {
+  width: 35px;
+}
 #about .section-wrapper .roll-out .dice {
+  position: relative;
   width: 115px;
   height: 115px;
   border-radius: 29px;
@@ -222,9 +265,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  transition: 300ms;
+  transition: 250ms;
 }
 #about .section-wrapper .roll-out .dice:hover {
+  transform: translateY(-10px);
   background: #B0B0B0;
 }
 #about .section-wrapper .roll-out .dice:hover img {
@@ -234,12 +278,6 @@ body {
 #about .section-wrapper .roll-out .dice:hover .caption {
   font-size: 0.95em;
 }
-#about .section-wrapper .roll-out img {
-  pointer-events: none;
-  transition: 350ms;
-  width: 25px;
-  margin-top: 15px;
-}
 #about .section-wrapper .roll-out .caption {
   transition: 350ms;
   display: flex;
@@ -247,13 +285,7 @@ body {
   align-items: center;
   justify-content: center;
   line-height: 15px;
-  margin-bottom: 5px;
-}
-#about .section-wrapper .roll-out .philosopher {
-  width: 20px;
-}
-#about .section-wrapper .roll-out .youtube {
-  width: 35px;
+  margin-bottom: 10px;
 }
 #about .section-wrapper .roll-out p {
   font-size: 0.85em;
@@ -272,6 +304,7 @@ body {
 #about .section-wrapper .arrow-recktangle .arrow {
   width: 20px;
   transform: rotate(180deg);
+  margin-top: 15px;
 }
 #about .section-wrapper .arrow-recktangle .arrow:hover {
   -webkit-animation: arrow-happy 0.35s;
@@ -380,12 +413,60 @@ body {
   font-size: 12px;
 }
 
+#projects .white-box {
+  position: relative;
+  right: -18vw;
+  width: 82vw;
+  height: 540px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 150px;
+}
+#projects .projects-container {
+  position: relative;
+  transform: translateX(-1.5vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3vw;
+}
+#projects .tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15.5vw;
+  height: 19.5vw;
+  background: #dcdcdc;
+  border: 1vw solid #d1d1d1;
+  transition: 0.6s;
+}
+#projects .tile:nth-child(1):hover {
+  background: #D7AF72;
+  border: 1vw solid #D2A561;
+}
+#projects .tile:nth-child(2):hover {
+  background: #ffffff;
+  border: 1vw solid #666666;
+}
+#projects .tile:nth-child(3):hover {
+  background: #000000;
+  border: 1vw solid #000000;
+}
+#projects .tile:nth-child(3):hover img {
+  transition: 0.4s;
+  filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(81deg) brightness(104%) contrast(101%);
+}
+#projects .tile:nth-child(4):hover {
+  background: #ffffff;
+  border: 1vw solid #000000;
+}
 #projects img {
-  width: 15vw;
+  width: 9vw;
 }
 #projects .next {
-  font-family: "Playfair Display";
-  font-size: 60px;
+  width: 12vw;
 }
 
 ::-webkit-scrollbar {
@@ -410,6 +491,32 @@ body {
 @font-face {
   font-family: "Monument Extended";
   src: url(/src/fonts/MonumentExtended-Regular.otf);
+}
+@-webkit-keyframes arrows-movement {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-12px, -12px);
+  }
+  40% {
+    opacity: 0.75;
+  }
+  80% {
+    opacity: 0;
+    transform: rotate(45deg) translate(12px, 12px);
+  }
+}
+@keyframes arrows-movement {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-12px, -12px);
+  }
+  40% {
+    opacity: 0.75;
+  }
+  80% {
+    opacity: 0;
+    transform: rotate(45deg) translate(12px, 12px);
+  }
 }
 @-webkit-keyframes arrow-bring {
   15% {
