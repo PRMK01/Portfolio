@@ -6,44 +6,7 @@ const links = document.querySelectorAll('a');
 const logo = document.querySelector('.logo');
 const arrows = document.querySelectorAll('.arrow-recktangle');
 const rollOutContent = document.querySelectorAll('.roll-out-content');
-
-// NAVIGATION ON SCROLL FUNCTION....  (to make it fully work, change position on .Navigation to fixed)
-// let anchorClicked = false;
-// let logoClicked = false;
-// let currentScroll = window.scrollY;
-
-// document.addEventListener('scroll', e => {
-//     if (anchorClicked) {
-//         return
-//     } else {
-//         if(window.scrollY > currentScroll) {
-//             navBar.style.opacity = '0';
-//             navBar.style.pointerEvents = 'none';
-//         } else {
-//             navBar.style.opacity = '1';
-//             navBar.style.pointerEvents = 'auto';
-//         }
-//         currentScroll = window.scrollY;
-//     }
-// })
-
-// logo.addEventListener('click', () => {
-//     logoClicked = true;
-//     setTimeout(() => {logoClicked = false}, 200)
-// })
-
-// links.forEach(link => {
-//     link.addEventListener('click', () => {
-//         if (logoClicked) {
-//             return
-//         } else {
-//             anchorClicked = true;
-//             navBar.style.opacity = '0';
-//             navBar.style.pointerEvents = 'none';    
-//             setTimeout(() => {anchorClicked = false}, 800)
-//         }
-//     })
-// }) 
+const aboutText = document.querySelector('.about-text-wrapper');
 
 
 // SKILLS SECTION BEHAVIOR.... //
@@ -51,11 +14,11 @@ const rollOutContent = document.querySelectorAll('.roll-out-content');
 perks.forEach(perk => {
     perk.addEventListener('mouseover', () => {
         perk.nextElementSibling.style.opacity = '1';
-        perk.nextElementSibling.style.transform = 'translateY(15px)';
+        perk.nextElementSibling.style.transform = 'translateY(8px)';
     });
     perk.addEventListener('mouseout', () => {
         perk.nextElementSibling.style.opacity = '0';
-        perk.nextElementSibling.style.transform = 'translateY(0)';
+        perk.nextElementSibling.style.transform = 'translateY(-7px)';
 
     });
 })
@@ -108,9 +71,12 @@ document.addEventListener('mousemove', e => {
 
 
 //ROLL-OUT SECTION BEHAVIOR
+let x = 0;
+
 arrows.forEach(arrow => {
     arrow.addEventListener('click', () => {
         if (arrow.classList.contains('arrow-animation-1')) {
+            x--;
             arrow.classList.remove('arrow-animation-1');
             arrow.classList.add('arrow-animation-2');
             setTimeout(() => {
@@ -118,6 +84,7 @@ arrows.forEach(arrow => {
                 arrow.nextElementSibling.classList.add('roll-out-content-animation-2');
             }, 1000)
         } else {
+            x++;
             arrow.classList.remove('arrow-animation-2');
             arrow.classList.add('arrow-animation-1');
             setTimeout(() => {
@@ -125,5 +92,56 @@ arrows.forEach(arrow => {
                 arrow.nextElementSibling.classList.add('roll-out-content-animation-1');
             }, 2000)
         }
+        if (x > 0) {
+            setTimeout(() => {
+                aboutText.classList.remove('about-text-animation-2');
+                aboutText.classList.add('about-text-animation-1');
+            }, 1100)
+        } else {
+            setTimeout(() => {
+                aboutText.classList.remove('about-text-animation-1');
+                aboutText.classList.add('about-text-animation-2');
+            }, 1150)
+        }
     })
 })
+
+
+
+// NAVIGATION ON SCROLL FUNCTION....  (to make it fully work, change position on .Navigation to fixed)
+// let anchorClicked = false;
+// let logoClicked = false;
+// let currentScroll = window.scrollY;
+
+// document.addEventListener('scroll', e => {
+//     if (anchorClicked) {
+//         return
+//     } else {
+//         if(window.scrollY > currentScroll) {
+//             navBar.style.opacity = '0';
+//             navBar.style.pointerEvents = 'none';
+//         } else {
+//             navBar.style.opacity = '1';
+//             navBar.style.pointerEvents = 'auto';
+//         }
+//         currentScroll = window.scrollY;
+//     }
+// })
+
+// logo.addEventListener('click', () => {
+//     logoClicked = true;
+//     setTimeout(() => {logoClicked = false}, 200)
+// })
+
+// links.forEach(link => {
+//     link.addEventListener('click', () => {
+//         if (logoClicked) {
+//             return
+//         } else {
+//             anchorClicked = true;
+//             navBar.style.opacity = '0';
+//             navBar.style.pointerEvents = 'none';    
+//             setTimeout(() => {anchorClicked = false}, 800)
+//         }
+//     })
+// }) 

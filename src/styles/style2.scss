@@ -195,3 +195,66 @@
         //         opacity: 1;
         //     }
         // }
+
+
+
+
+//BACKGROUND PLAY
+        // .background {
+        //     $c: #181344;
+        //     $s: 10px;
+        //     $p: 14px;
+        //     z-index: -2;
+        //     position: fixed;
+        //     width: 15vw;
+        //     height: 100vh;
+        //     // left: -85vw;
+        //     // background: 
+        //     //     repeating-linear-gradient(45deg, #ebebeb 0 5px, transparent 0 11px),
+        //     //     // radial-gradient(circle, #fff, #efefef);
+        //     //     linear-gradient(145deg, #b9b9b9, rgb(255, 255, 255));
+        //     // mask: conic-gradient(at #{$p $p}, transparent 75%, red 0%)
+        //     //     0/ #{$s $s};
+        //     background: 
+        //         repeating-linear-gradient(45deg, $c 0 $s, transparent 0 $p),
+        //         repeating-linear-gradient(-45deg, $c 0 $s, transparent 0 $p),
+        //         radial-gradient(#3b5f6d, $c);
+        // }
+        // .background {
+        //     z-index: -2;
+        //     position: fixed;
+        //     width: 100vw;
+        //     height: 100%;
+        //     background: linear-gradient(135deg, #fff, #ffffff);
+        // }
+
+
+
+
+
+
+
+//ABOUT MARBLE ELEMENT
+// HTML 
+
+// <div class="marble-background">
+// <img class="decoration" src="/src/assets/images/black-onyx-marble-texture.jpg" alt="Black Onyx">
+// </div>
+
+//CSS
+        // .marble-background {
+        //     display: none;
+        //     position: absolute;
+        //     background: white;
+        //     width: 300px;
+        //     height: 190px;
+        //     left: -20px;
+        //     top: 110px; 
+        //     .decoration {
+        //         opacity: .4;
+        //         // filter: brightness(2) invert(.7);
+        //         max-width: 100%;
+        //         min-height: 100%;
+    
+        //     }
+        // }

@@ -1,0 +1,103 @@
+HTML
+
+                     <div class="about-text-wrapper">
+                        <p>I am a self-taught programmer and UX/UI designer based in Warsaw. In my</p>
+                        <p>projects, I focus on creating responsive websites designed in a user-oriented</p>
+                        <p>approach. So far I have had the most opportunities to work with the frontend</p>
+                        <p>technologies - mostly JavaScript and React. But in the nearest future, I’m</p>
+                        <p>planning on extending my practical knowledge of the backend too. Being a full-</p>
+                        <p>stack developer is what I’m aiming for.</p>
+                        <p>Other than strictly programming, I also like taking care of the graphic design on</p>
+                        <p>the website, so I have experience with programs like GIMP and Inkscape.</p>
+                        <p>I enjoy working in a team environment, and I get along well with people. Logical</p>
+                        <p>thinking and the ability to solve complex problems are my fortes.</p>
+                     </div>
+
+
+
+CSS 
+
+        .about-text-wrapper {
+            margin-top: 40px;
+            min-width: 1150px;
+            width: 1150px;
+            p {
+                width: 100%;
+                text-align: center;
+                white-space: nowrap;
+                color: rgb(98, 98, 98);
+                font-family: "Lato";
+                font-size: 18px;
+                letter-spacing: 2px;
+                line-height: 38px;
+                &:nth-child(6), &:nth-child(8) {
+                    margin-bottom: 35px;
+                }
+            }
+        }
+
+
+        .about-text-animation-1 {
+            animation: text-to-left 1s ease-in-out forwards;
+        }
+        .about-text-animation-2 {
+            animation: text-to-center .9s ease-in-out forwards;
+        }
+
+
+// @keyframes text-to-left {
+//     100% {
+//         width: 0;
+//     }
+// }
+
+// @keyframes text-to-center {
+//     0% {
+//         width: 0;
+//     }
+
+//     100% {
+//         width: 100%;
+//     }
+// }
+
+
+
+JavaScript
+
+// arrows.forEach(arrow => {
+//     arrow.addEventListener('click', () => {
+//         if (arrow.classList.contains('arrow-animation-1')) {
+//             x--;
+//             arrow.classList.remove('arrow-animation-1');
+//             arrow.classList.add('arrow-animation-2');
+//             setTimeout(() => {
+//                 arrow.nextElementSibling.classList.remove('roll-out-content-animation-1');
+//                 arrow.nextElementSibling.classList.add('roll-out-content-animation-2');
+//             }, 1000)
+//         } else {
+//             x++;
+//             arrow.classList.remove('arrow-animation-2');
+//             arrow.classList.add('arrow-animation-1');
+//             setTimeout(() => {
+//                 arrow.nextElementSibling.classList.remove('roll-out-content-animation-2');
+//                 arrow.nextElementSibling.classList.add('roll-out-content-animation-1');
+//             }, 2000)
+//         }
+//         if (x > 0) {
+//             setTimeout(() => {
+//                 aboutText.forEach(text => {
+//                     text.classList.remove('about-text-animation-2');
+//                     text.classList.add('about-text-animation-1');
+//                 })
+//             }, 1250)
+//         } else {
+//             setTimeout(() => {
+//                 aboutText.forEach(text => {
+//                     text.classList.remove('about-text-animation-1');
+//                     text.classList.add('about-text-animation-2');
+//                 })
+//             }, 1400)
+//         }
+//     })
+// })

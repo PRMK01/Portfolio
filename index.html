@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Ropa+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="background"></div>
     <div class="cursor"></div>
     <div id="container">
         <nav>
@@ -41,10 +42,13 @@
                     <span></span>
                     <span></span>
                 </div>
+                
             </div>
         </header>
 
         <main>
+            <div class="black-background"></div>
+            
             <section id="about">
                 <div class="section-title">
                     <h2>about</h2>
@@ -57,7 +61,7 @@
                         <p>Other than strictly programming, I also like taking care of the graphic design on the website, so I have experience with programs like GIMP and Inkscape.</p>
                         <p>I enjoy working in a team environment, and I get along well with people.Logical thinking and the ability to solve complex problems are my fortes.</p>
                      </div>
-                     <div>
+                     <div class="roll-out-container">
                          <div class="roll-out">
                             <div class="arrow-recktangle">
                                 <div>
@@ -76,7 +80,7 @@
                                        <div class="caption"><p>Physical</p> <p>activity</p></div>                                    
                                    </div>
                                    <div class="dice">
-                                       <img src="/src/assets/svgs/about/health.svg" alt="Heart">
+                                       <img class="heart" src="/src/assets/svgs/about/health.svg" alt="Heart">
                                        <div class="caption"><p>Healthy</p> <p>lifestyle</p></div>                                    
                                    </div>
                                    <div class="dice">
@@ -114,13 +118,11 @@
                             </div>
                          </div>
                      </div>
-                     <div class="marble-background">
-                         <img class="decoration" src="/src/assets/images/black-onyx-marble-texture.jpg" alt="Black Onyx">
-                     </div>
                 </div>
             </section>
 
             <section id="skills">
+                
                 <div class="section-title">
                     <h2>skillset</h2>
                     <div class="line"></div>
@@ -249,7 +251,7 @@
                     </div>
                 </div>
             </section>
-
+            
             <section id="projects">
                 <div class="section-title">
                     <h2>projects</h2>
@@ -257,18 +259,67 @@
                 </div>
                 <div class="white-box">
                     <div class="projects-container">
-                        <div class="tile">
-                            <img src="/src/assets/svgs/calculator_adv.svg" alt="Calculator">
+                        <div class="overtile">
+                            <div class="tile">
+                                <img src="/src/assets/svgs/calculator_adv.svg" alt="Calculator">
+                            </div>
                         </div>
-                        <div class="tile">
-                            <img src="/src/assets/svgs/todo.svg" alt="ToDo List">
+                        <div class="overtile">
+                            <div class="tile">
+                                <img src="/src/assets/svgs/todo.svg" alt="ToDo List">
+                            </div>
                         </div>
-                        <div class="tile">
-                            <img src="/src/assets/svgs/logo13.svg" alt="Personal website logo">
+                        <div class="overtile">
+                            <div class="tile">
+                                <img src="/src/assets/svgs/logo13.svg" alt="Personal website logo">
+                            </div>
                         </div>
-                        <div class="tile">
-                            <img class="next" src="/src/assets/svgs/next.svg" alt="Next projects">
+                        <div class="overtile">
+                            <div class="tile">
+                                <img class="next" src="/src/assets/svgs/next.svg" alt="Next projects">
+                            </div>
                         </div>
+
+
+
+
+
+                        <!-- <div class="overtile">
+                            <div class="tile-border">
+                                <div class="tile">
+                                    <img src="/src/assets/svgs/calculator_adv.svg" alt="Calculator">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="overtile">
+                            <div class="tile-border">
+                                <div class="tile">
+                                    <img src="/src/assets/svgs/todo.svg" alt="ToDo List">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="overtile">
+                            <div class="tile-border">
+                                <div class="tile">
+                                    <img src="/src/assets/svgs/logo13.svg" alt="Personal website logo">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="overtile">
+                            <div class="tile-border">
+                                <div class="tile">
+                                    <img class="next" src="/src/assets/svgs/next.svg" alt="Next projects">
+                                </div>
+                            </div>
+
+                        </div> -->
+                        
+
+                        
+                        
                     </div>
                 </div>  
                 <div class="project calculator">
@@ -277,7 +328,10 @@
                 </div>      
             </section>
 
+            <div class="black-background"></div>
+
             <section id="contact">
+                
                 <div class="section-title">
                     <h2>contact</h2>
                     <div class="line"></div>
