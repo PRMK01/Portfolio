@@ -43,12 +43,11 @@ body {
         position: absolute;
         left: 3vw;
         img {
-            filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(81deg) brightness(104%) contrast(101%);
+            filter: invert(91%) sepia(15%) saturate(0%) hue-rotate(216deg) brightness(88%) contrast(82%);
             width: 3.5vw;
-            transition: .2s ease-in-out, filter .1s;
+            transition: .3s;
             &:hover {
-                // filter: invert(36%) sepia(61%) saturate(2610%) hue-rotate(215deg) brightness(97%) contrast(108%);
-                transform: scale(.95);
+                filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(81deg) brightness(104%) contrast(101%);
             }
         }
     }
@@ -186,26 +185,57 @@ body {
         //     }
         // }
         a {
-            padding: 2vw;
-            // display: inline-block;
+            display: inline-block;
+            padding: 2vw 1.5vw;
+            margin: .5vw;
             position: relative;
-            color: white;
-            -webkit-text-stroke: 1px #000000;
             text-decoration: none;
             font-family: 'Monument Extended';
             font-size: 15px;
+            color: white;
+            -webkit-text-stroke: 1px #000000;
             letter-spacing: 2px;
             text-transform: uppercase;
             border: solid white 1px;
-            &::before {
+            &:hover {
+                z-index: 10;
+                p {
+                    // font-size: 16px;
+                }
+            }
+            p {
+                z-index: 2;
+                position: relative;
+                transition: .3s;
+            }
+            &:before, &:after {
                 content: "";
-                height: 100% + 2px;
-                width: 85%;
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 background: black;
+                z-index: 1;
+            }
+            &:before {
+                height: calc(100% + 3px);
+                width: calc(100% + 3px);
+                transition: width 1s ease, opacity .8s ease;
+            }
+            &:after {
+                width: calc(100% + 3px);
+                height: calc(100% + 3px);
+                transition: height 1s ease, opacity .8s ease;
+            }
+            &:hover:after {
+                height: 85%;
+                opacity: .8;
+                transition: height .2s ease , opacity .3s ease;
+            }
+            &:hover:before {
+                width: 90%;
+                opacity: .8;
+                transition: width .2s ease , opacity .3s ease;
             }
         }
     }
