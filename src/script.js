@@ -1,147 +1,137 @@
-const navBar = document.querySelector('.navigation');
 const perks = document.querySelectorAll('.perk img');
 const columns = document.querySelectorAll('.column');
 const cursor = document.querySelector('.cursor');
-const links = document.querySelectorAll('a');
-const logo = document.querySelector('.logo');
-const arrows = document.querySelectorAll('.arrow-recktangle');
-const rollOutContent = document.querySelectorAll('.roll-out-content');
-const aboutText = document.querySelector('.about-text-wrapper');
+const sections = document.querySelectorAll('section');
+const technologiesUsed = document.querySelectorAll('.technology-used');
+
+import gsap from 'gsap';
+import './3dObject.js';
+import './contact.js';
+import './animations.js'
 
 
 // SKILLS SECTION BEHAVIOR.... //
-
 perks.forEach(perk => {
     perk.addEventListener('mouseover', () => {
         perk.nextElementSibling.style.opacity = '1';
-        perk.nextElementSibling.style.transform = 'translateY(8px)';
+        perk.nextElementSibling.style.transform = 'translateY(clamp(6px, .42vw, 22px))';
     });
     perk.addEventListener('mouseout', () => {
         perk.nextElementSibling.style.opacity = '0';
-        perk.nextElementSibling.style.transform = 'translateY(-7px)';
+        perk.nextElementSibling.style.transform = 'translateY(clamp(-20px, -.36vw, -5px))';
 
     });
 })
 
-columns.forEach(column => {
-    column.addEventListener('mouseover', () => {
-        column.children[0].style.top = '-62px';
-    });
-    column.addEventListener('mouseout', () => {
-        column.children[0].style.top = '0';
-    });
-})
+if(window.matchMedia('(hover: hover)').matches) {
+    columns.forEach(column => {
+        column.addEventListener('mouseover', () => {
+            column.children[0].style.top = 'clamp(calc((80px + 0.625vw) * (-1)), -3.23vw, calc((40px + 0.625vw) * (-1)))';
+        });
+        column.addEventListener('mouseout', () => {
+            column.children[0].style.top = '0';
+        });
+    })
+}
 
 // CURSOR FUNCTION.... //
-document.addEventListener('mouseleave', () => {
-    cursor.style.display = 'none';
-})
-
-document.addEventListener('mouseenter', () => {
-    cursor.style.display = 'block';
-})
-
-document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-})
-
-document.addEventListener('mousemove', e => {
-    if (e.clientX > (window.innerWidth - 9)) {
+if(window.matchMedia('(hover: hover)').matches) {
+    document.addEventListener('mouseleave', () => {
         cursor.style.display = 'none';
-    } else {
-        cursor.style.display = 'block'; 
-    }
-})
-
-// links.forEach(link => {
-//     link.addEventListener('mouseenter', () => {
-//         cursor.style.mixBlendMode = 'difference';
-//         cursor.style.width = '16px';
-//         cursor.style.height = '16px';
-//         cursor.style.background = '#ffffff';
-//     })
-//     link.addEventListener('mouseleave', () => {
-//         cursor.style.mixBlendMode = 'normal';
-//         cursor.style.width = '12px';
-//         cursor.style.height = '12px';
-//         cursor.style.background = '#3f6cff';
-//     })
-// })
-
-
-//ROLL-OUT SECTION BEHAVIOR
-let x = 0;
-
-arrows.forEach(arrow => {
-    arrow.addEventListener('click', () => {
-        if (arrow.classList.contains('arrow-animation-1')) {
-            x--;
-            arrow.classList.remove('arrow-animation-1');
-            arrow.classList.add('arrow-animation-2');
-            setTimeout(() => {
-                arrow.nextElementSibling.classList.remove('roll-out-content-animation-1');
-                arrow.nextElementSibling.classList.add('roll-out-content-animation-2');
-            }, 1000)
+    })
+    
+    document.addEventListener('mouseenter', () => {
+        cursor.style.display = 'block';
+    })
+    
+    document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    })
+    
+    document.addEventListener('mousemove', e => {
+        if (e.clientX > (window.innerWidth - 9)) {
+            cursor.style.display = 'none';
         } else {
-            x++;
-            arrow.classList.remove('arrow-animation-2');
-            arrow.classList.add('arrow-animation-1');
-            setTimeout(() => {
-                arrow.nextElementSibling.classList.remove('roll-out-content-animation-2');
-                arrow.nextElementSibling.classList.add('roll-out-content-animation-1');
-            }, 2000)
+            cursor.style.display = 'block'; 
         }
-        if (x > 0) {
-            setTimeout(() => {
-                aboutText.classList.remove('about-text-animation-2');
-                aboutText.classList.add('about-text-animation-1');
-            }, 1100)
-        } else {
-            setTimeout(() => {
-                aboutText.classList.remove('about-text-animation-1');
-                aboutText.classList.add('about-text-animation-2');
-            }, 1150)
+    })
+}else {
+    cursor.style.display = 'none';
+}
+
+
+
+//DYNAMIC WIDTH CHANGE OF AN ELEMENT
+let textWidth;
+
+technologiesUsed.forEach( technology => {
+    technology.addEventListener('mouseover', () => {
+        textWidth = technology.querySelector('p').offsetWidth;
+        if(window.matchMedia('(max-width: 500px)').matches) {
+            technology.style.width = `calc(${textWidth}px + 1.65vw + clamp(36px, 2.8vw, 200px))`
+        }else {
+            technology.style.width = `calc(${textWidth}px + .65vw + clamp(36px, 2.8vw, 200px))`
         }
+    })
+    technology.addEventListener('mouseout', () => {
+        technology.style.width = 'clamp(36px, 2.82vw, 200px)';
     })
 })
 
 
 
-// NAVIGATION ON SCROLL FUNCTION....  (to make it fully work, change position on .Navigation to fixed)
-// let anchorClicked = false;
-// let logoClicked = false;
-// let currentScroll = window.scrollY;
+//SCROLL UP ON RELOAD
+history.scrollRestoration = 'manual';
+window.addEventListener('pagehide', () => {
+    window.scrollTo({
+        top: 0, 
+        left: 0, 
+        behavior: 'instant'
+    })
+})
 
-// document.addEventListener('scroll', e => {
-//     if (anchorClicked) {
-//         return
-//     } else {
-//         if(window.scrollY > currentScroll) {
-//             navBar.style.opacity = '0';
-//             navBar.style.pointerEvents = 'none';
-//         } else {
-//             navBar.style.opacity = '1';
-//             navBar.style.pointerEvents = 'auto';
-//         }
-//         currentScroll = window.scrollY;
-//     }
-// })
 
-// logo.addEventListener('click', () => {
-//     logoClicked = true;
-//     setTimeout(() => {logoClicked = false}, 200)
-// })
 
-// links.forEach(link => {
-//     link.addEventListener('click', () => {
-//         if (logoClicked) {
-//             return
-//         } else {
-//             anchorClicked = true;
-//             navBar.style.opacity = '0';
-//             navBar.style.pointerEvents = 'none';    
-//             setTimeout(() => {anchorClicked = false}, 800)
-//         }
-//     })
-// }) 
+//SECTION TITLE ANIMATION ONSCROLL
+function sectionTitleReveal () {
+    if(window.matchMedia('(max-width: 1000px)').matches) {
+        const sectionObserver = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        gsap.to(entry.target.querySelector('.section-title h2'), { opacity: 1, scale: 1, duration: 1.1});
+                        gsap.to(entry.target.querySelector('.line'), { width: '15vw', delay: 1.2, duration: .8})
+                    }
+                })
+            },
+            {
+                threshold: 0.1
+            }
+        )
+        
+        sections.forEach( section => {
+            sectionObserver.observe(section);
+        })
+    }else {
+        const sectionObserver = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        gsap.to(entry.target.querySelector('.section-title h2'), { opacity: 1, scale: 1, duration: 1.1});
+                        gsap.to(entry.target.querySelector('.line'), { width: '7.8vw', delay: 1.2, duration: .8})
+                    }
+                })
+            },
+            {
+                threshold: 0.7
+            }
+        )
+        
+        sections.forEach( section => {
+            sectionObserver.observe(section);
+        })
+    }
+}
+
+sectionTitleReveal();

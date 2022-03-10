@@ -1,0 +1,30 @@
+{
+  "name": "my-personal-website",
+  "version": "1.0.0",
+  "description": "My personal portfolio website",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --progress --mode = production",
+    "watch": "webpack --progress --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PRMK01/Portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PRMK01/Portfolio/issues"
+  },
+  "homepage": "https://github.com/PRMK01/Portfolio#readme",
+  "devDependencies": {
+    "webpack": "^5.67.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "gsap": "^3.9.1",
+    "stats.js": "^0.17.0",
+    "three": "^0.136.0"
+  }
+}
