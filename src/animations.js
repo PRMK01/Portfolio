@@ -2,19 +2,29 @@ import gsap from 'gsap';
 
 //PAGE LOADING
 window.addEventListener('load', () => {
-    const timeline = gsap.timeline({ defaults: {}});
-    timeline
-        .to('.loader', { duration: .4, delay: .4, opacity: 0, display: 'none'})
-        .from('.cursor', { duration: 0.2, opacity: 0 })
-        .from('.name', { duration: .7, opacity: 0, y: '-15%' }, '<.1')
-        .from('.navigation', { duration: .4, opacity: 0, y: '-10%'}, '<.5')
-        .from('.arrows', { duration: .4, opacity: 0, ease: 'expo'})
-        .to('html', { duration: 0.1, overflowY: 'overlay'})
+    if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+        const timeline = gsap.timeline({ defaults: {}});
+        timeline
+            .to('.loader', { duration: .4, delay: .4, opacity: 0, display: 'none'})
+            .from('.cursor', { duration: 0.2, opacity: 0 })
+            .from('.name', { duration: .7, opacity: 0, y: '-15%' }, '<.1')
+            .from('.navigation', { duration: .4, opacity: 0, y: '-10%'}, '<.5')
+            .from('.arrows', { duration: .4, opacity: 0, ease: 'expo'})
+            .to('html', { duration: 0.1, overflowY: 'auto'})
+    } else {
+        const timeline = gsap.timeline({ defaults: {}});
+        timeline
+            .to('.loader', { duration: .4, delay: .4, opacity: 0, display: 'none'})
+            .from('.cursor', { duration: 0.2, opacity: 0 })
+            .from('.name', { duration: .7, opacity: 0, y: '-15%' }, '<.1')
+            .from('.navigation', { duration: .4, opacity: 0, y: '-10%'}, '<.5')
+            .from('.arrows', { duration: .4, opacity: 0, ease: 'expo'})
+            .to('html', { duration: 0.1, overflowY: 'overlay'})
+    }
 });
 screen.orientation.addEventListener('change', () => {
     document.location.reload(true);
 });
-
 
 
 //ROLL-OUT SECTION BEHAVIOR
@@ -124,19 +134,33 @@ projectsTiles.forEach( tile => {
     })
 
     project.querySelector('.arrow-back').addEventListener('click', () => {
-        let timeline2 = gsap.timeline({defaults: { duration: .001}})
         let laptopButton = project.querySelector('[data-name="laptop-button"]');
         let mobileButton = project.querySelector('[data-name="mobile-button"]');
-        timeline2
-            .to(project, { y: '100%', duration: 1, ease: 'expo', delay: 0})
-            .to(project, { display: 'none'}, 1)
-            .to('html', { overflowY: 'overlay'}, 1)
-            .fromTo('.tile', { pointerEvents: 'none'}, { pointerEvents: 'auto'}, 1)
-            .to(laptopButton, { y: 0}, 1)
-            .to(laptopButton.querySelector('img'), { filter: 'invert(100%) sepia(6%) saturate(0%) hue-rotate(115deg) brightness(108%) contrast(108%)'}, 1)
-            .to(mobileButton, { y: 0}, 1)
-            .to(mobileButton.querySelector('img'), { filter: 'invert(65%) sepia(2%) saturate(0%) hue-rotate(157deg) brightness(82%) contrast(94%)'}, 1)
-            .to(project.querySelector('.mobile'), { x: '-90vw'}, 1);
+        if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+            let timeline2 = gsap.timeline({defaults: { duration: .001}})
+            timeline2
+                .to(project, { y: '100%', duration: 1, ease: 'expo', delay: 0})
+                .to(project, { display: 'none'}, 1)
+                .to('html', { overflowY: 'auto'}, 1)
+                .fromTo('.tile', { pointerEvents: 'none'}, { pointerEvents: 'auto'}, 1)
+                .to(laptopButton, { y: 0}, 1)
+                .to(laptopButton.querySelector('img'), { filter: 'invert(100%) sepia(6%) saturate(0%) hue-rotate(115deg) brightness(108%) contrast(108%)'}, 1)
+                .to(mobileButton, { y: 0}, 1)
+                .to(mobileButton.querySelector('img'), { filter: 'invert(65%) sepia(2%) saturate(0%) hue-rotate(157deg) brightness(82%) contrast(94%)'}, 1)
+                .to(project.querySelector('.mobile'), { x: '-90vw'}, 1);
+        } else {
+            let timeline2 = gsap.timeline({defaults: { duration: .001}})
+            timeline2
+                .to(project, { y: '100%', duration: 1, ease: 'expo', delay: 0})
+                .to(project, { display: 'none'}, 1)
+                .to('html', { overflowY: 'overlay'}, 1)
+                .fromTo('.tile', { pointerEvents: 'none'}, { pointerEvents: 'auto'}, 1)
+                .to(laptopButton, { y: 0}, 1)
+                .to(laptopButton.querySelector('img'), { filter: 'invert(100%) sepia(6%) saturate(0%) hue-rotate(115deg) brightness(108%) contrast(108%)'}, 1)
+                .to(mobileButton, { y: 0}, 1)
+                .to(mobileButton.querySelector('img'), { filter: 'invert(65%) sepia(2%) saturate(0%) hue-rotate(157deg) brightness(82%) contrast(94%)'}, 1)
+                .to(project.querySelector('.mobile'), { x: '-90vw'}, 1);
+        }
 
         startingOrder = true;
     })
@@ -283,16 +307,30 @@ let hamburgerClicked = false;
 hamburgerMenu.addEventListener('click', () => {
     if(hamburgerClicked) {
         hamburgerClicked = false;
-        const timeline2 = gsap.timeline({ defaults: {}});
-        timeline2
-            .to('.navigation li', { duration: .35, opacity: 0, y: '-2vw'})
-            .to('.navigation ul', { duration: .4, opacity: 0})
-            .to('.navigation ul', { duration: .001, display: 'none'})
-            .to(hamburgerMenu.children[0], {transformOrigin: 'left', rotateZ: '0', width: '50%', ease: 'back', duration: .25 }, .1)
-            .to(hamburgerMenu.children[1], {transformOrigin: 'center', height: '3px', ease: 'back', duration: .25 }, '<')
-            .to(hamburgerMenu.children[2], {transformOrigin: 'right', rotateZ: '0', x: '0', width: '75%', ease: 'back', duration: .25 }, '<')
-            .to(hamburgerMenu, { justifyContent: 'space-around', duration: 0.1}, '<')
-            .to('html', { overflowY: 'overlay', duration: 0.01})     
+        if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+            const timeline2 = gsap.timeline({ defaults: {}});
+            timeline2
+                .to('.navigation li', { duration: .35, opacity: 0, y: '-2vw'})
+                .to('.navigation ul', { duration: .4, opacity: 0})
+                .to('.navigation ul', { duration: .001, display: 'none'})
+                .to(hamburgerMenu.children[0], {transformOrigin: 'left', rotateZ: '0', width: '50%', ease: 'back', duration: .25 }, .1)
+                .to(hamburgerMenu.children[1], {transformOrigin: 'center', height: '3px', ease: 'back', duration: .25 }, '<')
+                .to(hamburgerMenu.children[2], {transformOrigin: 'right', rotateZ: '0', x: '0', width: '75%', ease: 'back', duration: .25 }, '<')
+                .to(hamburgerMenu, { justifyContent: 'space-around', duration: 0.1}, '<')
+                .to('html', { overflowY: 'auto', duration: 0.01}) 
+        } else {
+            const timeline2 = gsap.timeline({ defaults: {}});
+            timeline2
+                .to('.navigation li', { duration: .35, opacity: 0, y: '-2vw'})
+                .to('.navigation ul', { duration: .4, opacity: 0})
+                .to('.navigation ul', { duration: .001, display: 'none'})
+                .to(hamburgerMenu.children[0], {transformOrigin: 'left', rotateZ: '0', width: '50%', ease: 'back', duration: .25 }, .1)
+                .to(hamburgerMenu.children[1], {transformOrigin: 'center', height: '3px', ease: 'back', duration: .25 }, '<')
+                .to(hamburgerMenu.children[2], {transformOrigin: 'right', rotateZ: '0', x: '0', width: '75%', ease: 'back', duration: .25 }, '<')
+                .to(hamburgerMenu, { justifyContent: 'space-around', duration: 0.1}, '<')
+                .to('html', { overflowY: 'overlay', duration: 0.01}) 
+        }
+    
     } else {
         window.scrollTo({
             top: 0, 
@@ -321,14 +359,25 @@ navigationLinks.forEach(link => {
         document.getElementById(e.target.dataset.text).scrollIntoView({ behavior: "smooth"});
         if(window.matchMedia('(max-width: 1000px)').matches) {
             hamburgerClicked = false;
-            const timeline = gsap.timeline();
-            timeline
-                .to('html', { overflowY: 'overlay', duration: 0.01})
-                .to('.navigation ul', { duration: .001, display: 'none'}, .4)
-                .to(hamburgerMenu.children[0], {transformOrigin: 'center left', rotateZ: '0', width: '50%', ease: 'back', duration: .001 }, .4)
-                .to(hamburgerMenu.children[1], {transformOrigin: 'center', height: '3px', ease: 'back', duration: .001 }, '<')
-                .to(hamburgerMenu.children[2], {transformOrigin: 'center right', rotateZ: '0', x: '0', width: '75%', ease: 'back', duration: .001 }, '<')
-                .to(hamburgerMenu, { justifyContent: 'space-around', duration: 0.001}, '<')
+            if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+                const timeline = gsap.timeline();
+                timeline
+                    .to('html', { overflowY: 'auto', duration: 0.01})
+                    .to('.navigation ul', { duration: .001, display: 'none'}, .4)
+                    .to(hamburgerMenu.children[0], {transformOrigin: 'center left', rotateZ: '0', width: '50%', ease: 'back', duration: .001 }, .4)
+                    .to(hamburgerMenu.children[1], {transformOrigin: 'center', height: '3px', ease: 'back', duration: .001 }, '<')
+                    .to(hamburgerMenu.children[2], {transformOrigin: 'center right', rotateZ: '0', x: '0', width: '75%', ease: 'back', duration: .001 }, '<')
+                    .to(hamburgerMenu, { justifyContent: 'space-around', duration: 0.001}, '<')
+            } else {
+                const timeline = gsap.timeline();
+                timeline
+                    .to('html', { overflowY: 'overlay', duration: 0.01})
+                    .to('.navigation ul', { duration: .001, display: 'none'}, .4)
+                    .to(hamburgerMenu.children[0], {transformOrigin: 'center left', rotateZ: '0', width: '50%', ease: 'back', duration: .001 }, .4)
+                    .to(hamburgerMenu.children[1], {transformOrigin: 'center', height: '3px', ease: 'back', duration: .001 }, '<')
+                    .to(hamburgerMenu.children[2], {transformOrigin: 'center right', rotateZ: '0', x: '0', width: '75%', ease: 'back', duration: .001 }, '<')
+                    .to(hamburgerMenu, { justifyContent: 'space-around', duration: 0.001}, '<')
+            }
         }
     })
 })

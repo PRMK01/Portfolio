@@ -65,11 +65,13 @@ body {
   align-items: center;
   font-family: "Monument Extended";
   letter-spacing: 0.52vw;
+  text-align: center;
   text-transform: uppercase;
   margin-top: clamp(60px, 3.9vw, 120px);
   margin-bottom: clamp(40px, 3.65vw, 120px);
 }
 .section-title h2 {
+  text-align: center;
   -webkit-text-stroke: clamp(1px, 0.05vw, 3px) #ffffff;
   font-weight: 400;
   font-size: clamp(35px, 2.34vw, 70px);
@@ -133,7 +135,7 @@ body {
 }
 #header .arrows {
   position: absolute;
-  bottom: 9%;
+  bottom: 12%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -145,7 +147,7 @@ body {
   border-bottom: clamp(2.5px, 0.156vw, 8px) solid #fff;
   border-right: clamp(2.5px, 0.156vw, 8px) solid #fff;
   transform: rotate(45deg);
-  margin: clamp(-17px, -1.04vw, -45px);
+  margin-bottom: clamp(-17px, -1.04vw, -45px);
   -webkit-animation: arrows-movement 2.5s infinite;
           animation: arrows-movement 2.5s infinite;
 }
@@ -693,7 +695,7 @@ body {
   position: relative;
   font-size: clamp(18px, 1.5vw, 54px);
   letter-spacing: clamp(2px, 0.16vw, 7px);
-  font-family: "Monument";
+  font-family: "Monument Extended";
   width: 100%;
   border-radius: 0.3vw;
   background: transparent;
@@ -757,7 +759,7 @@ body {
 
 @font-face {
   font-family: "Monument Extended";
-  src: url(/src/fonts/MonumentExtended-Regular.otf);
+  src: url(../fonts/MonumentExtended-Regular.otf);
 }
 @-webkit-keyframes arrows-movement {
   0% {

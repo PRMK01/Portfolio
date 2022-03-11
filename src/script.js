@@ -36,11 +36,11 @@ if(window.matchMedia('(hover: hover)').matches) {
 
 // CURSOR FUNCTION.... //
 if(window.matchMedia('(hover: hover)').matches) {
-    document.addEventListener('mouseleave', () => {
+    document.querySelector('body').addEventListener('mouseleave', () => {
         cursor.style.display = 'none';
     })
     
-    document.addEventListener('mouseenter', () => {
+    document.querySelector('body').addEventListener('mouseenter', () => {
         cursor.style.display = 'block';
     })
     

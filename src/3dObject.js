@@ -14,11 +14,11 @@ import { MathUtils } from 'three';
 
 //TEXTURES
 const textureLoader = new THREE.TextureLoader();
-const ironOcclusion = textureLoader.load('../src/assets/3d_assets/textures/Iron_ambientOcclusion.jpg');
-const ironBaseColor = textureLoader.load('../src/assets/3d_assets/textures/Iron_basecolor.jpg');
-const ironMetallic = textureLoader.load('../src/assets/3d_assets/textures/Iron_metallic.jpg');
-const ironNormal = textureLoader.load('../src/assets/3d_assets/textures/Iron_normal.jpg');
-const ironRoughness = textureLoader.load('../src/assets/3d_assets/textures/Iron_roughness.jpg');
+const ironOcclusion = textureLoader.setPath('../src/assets/3d_assets/textures/').load('Iron_ambientOcclusion.jpg');
+const ironBaseColor = textureLoader.setPath('../src/assets/3d_assets/textures/').load('Iron_basecolor.jpg');
+const ironMetallic = textureLoader.setPath('../src/assets/3d_assets/textures/').load('Iron_metallic.jpg');
+const ironNormal = textureLoader.setPath('../src/assets/3d_assets/textures/').load('Iron_normal.jpg');
+const ironRoughness = textureLoader.setPath('../src/assets/3d_assets/textures/').load('Iron_roughness.jpg');
 
 
 
